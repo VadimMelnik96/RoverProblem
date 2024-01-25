@@ -122,15 +122,3 @@ class RoverTestCase(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-
-# walle = Rover()
-# walle.get_info()
-# walle.move("left")
-# walle.get_info()
-# walle.move("left")
-# walle.get_info()
-# walle.move("forward")
-# walle.get_info()
-# walle.move("backward")
-# walle.get_info()
