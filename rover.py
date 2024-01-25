@@ -2,7 +2,6 @@ import unittest
 
 
 class Rover:
-
     """
     Вас приветствует система управления марсоходом.
     Наш марсоход умеет:
@@ -87,7 +86,7 @@ class Rover:
 
     # логика получения всякой информации
     def get_coordinates(self):
-        return (self.x, self.y)
+        return self.x, self.y
 
     def get_camera_position(self):
         return self.camera_position
