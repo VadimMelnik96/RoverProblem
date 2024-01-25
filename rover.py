@@ -50,27 +50,25 @@ class Rover:
 
     # логика смены координат сделана с расчетом на четыре координатные четверти,
     # поэтому координаты могут быть отрицательными
-    def change_coordinates(self):
-        if self.camera_position == "North":
-            if self.x >= 0:
-                self.x += 1
-            else:
+    def change_coordinates(self, direction):
+        if direction == "backward":
+            if self.camera_position == "North":
                 self.x -= 1
-        elif self.camera_position == "South":
-            if self.x >= 0:
-                self.x -= 1
-            else:
+            elif self.camera_position == "South":
                 self.x += 1
-        elif self.camera_position == "East":
-            if self.y >= 0:
-                self.y += 1
-            else:
+            elif self.camera_position == "East":
                 self.y -= 1
-        elif self.camera_position == "West":
-            if self.y >= 0:
-                self.y -= 1
-            else:
+            elif self.camera_position == "West":
                 self.y += 1
+        elif direction in ("forward", "left", "right"):
+            if self.camera_position == "North":
+                self.x += 1
+            elif self.camera_position == "South":
+                self.x -= 1
+            elif self.camera_position == "East":
+                self.y += 1
+            elif self.camera_position == "West":
+                self.y -= 1
 
     # логика движения ровера
     def move(self, direction: str):
@@ -79,7 +77,7 @@ class Rover:
                 self.turn_right()
             elif direction.lower() == "left":
                 self.turn_left()
-            self.change_coordinates()
+            self.change_coordinates(direction)
         else:
             raise ValueError(
                 f"Please, choose correct direction from this list: {self.commands}")
@@ -122,3 +120,4 @@ class RoverTestCase(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+    
